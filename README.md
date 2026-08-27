@@ -6,6 +6,6 @@
     - Install dependencies in the root folder
 2. Run
     - Run this command in root folder
-    ```
-    npm run dev
-    ```
+        ```
+        npm run dev
+        ```
