@@ -16,6 +16,7 @@ const Navbar = () => {
       <div>
         {user ? (
           <>
+            <Link to="/admin=" className="mr-4">Admin</Link>
             <Link to="/game/6a9133fe2af73ed773253e2a/your-review" className="mr-4">Review (test)</Link>
             <Link to="/game/6a9133fe2af73ed773253e2a" className="mr-4">Game (test)</Link>
             <Link to="/profile" className="mr-4">Profile</Link>
