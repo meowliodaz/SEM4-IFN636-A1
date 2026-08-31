@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     university: { type: String },
     address: { type: String },
+    permission: {
+        type: String,
+        enum: ["admin", "user"]
+    },
 });
 
 userSchema.pre('save', async function (next) {
