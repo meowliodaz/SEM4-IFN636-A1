@@ -3,11 +3,11 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import Home from './pages/Home';
 import Game from './pages/Game';
 import Review from './pages/Review';
 import Admin from './pages/Admin';
-import UserManagement from './pages/UserManagement';
+import User from './pages/User';
+import NewUser from './pages/NewUser';
 
 function App() {
   return (
@@ -18,10 +18,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Profile />} />
         <Route path="/game/:id" element={<Game />} />
         <Route path="/game/:id/your-review" element={<Review />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/user/new" element={<NewUser />} />
+        <Route path="/admin/user/:userId" element={<User />} />
       </Routes>
     </Router>
   );
