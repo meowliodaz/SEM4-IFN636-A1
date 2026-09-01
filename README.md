@@ -5,15 +5,15 @@
     - Open terminal
     - Install dependencies in the root folder: `npm install`
     - Install dependencies in backend
-      ```
-      cd backend
-      npm install
-      ```
+        ```
+        cd backend
+        npm install
+        ```
     -  and frontend
-      ```
-      cd ../frontend
-      npm install
-      ```
+        ```
+        cd ../frontend
+        npm install
+        ```
 2. Change EC2 IP:
     - Find `.env.example` file in `frontend` folder
     - Create a new `.env` file in the same `frontend` folder
