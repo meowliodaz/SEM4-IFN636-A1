@@ -15,11 +15,11 @@ const Game = () => {
 	const [reviews, setReviews] = useState([]);
 	const [reviewers, setReviewers] = useState([]);
 
+	const urlArr = window.location.href.split("/");
+	const gameID = urlArr[urlArr.length - 1];
+
 	useEffect(() => {
 		const fetchGame = async () => {
-			const urlArr = window.location.href.split("/");
-			const gameID = urlArr[urlArr.length - 1];
-
 			try {
 				const gameRes = await axiosInstance.get(`/api/games/${gameID}`, {
 					headers: { Authorization: `Bearer ${user.token}` },
@@ -36,7 +36,9 @@ const Game = () => {
 				});
 				setYourReview(userReviewRes.data);
 				
-				// console.log(userReviewRes.data);
+				console.log("yourReview");
+				console.log(userReviewRes);
+				console.log(yourReview);
 			} catch (error) {
 				alert("2 \n" + error);
 			}
@@ -69,8 +71,8 @@ const Game = () => {
 				});
 				setReviewers(reviewersRes);
 				
-				console.log("reviewers");
-				console.log(reviewers);
+				// console.log("reviewers");
+				// console.log(reviewers);
 			} catch (error) {
 				alert("5 \n" + error);
 			}
@@ -80,14 +82,14 @@ const Game = () => {
 	}, [user]);
 
 	
-	useEffect(() => {
-		// console.log("yourReview");
-		// console.log(yourReview);
-		// console.log("reviews");
-		// console.log(reviews);
-		console.log("reviewers");
-		console.log(reviewers);
-	},[reviewers])
+	// useEffect(() => {
+	// 	console.log("yourReview");
+	// 	console.log(yourReview);
+	// 	// console.log("reviews");
+	// 	// console.log(reviews);
+	// 	// console.log("reviewers");
+	// 	// console.log(reviewers);
+	// },[yourReview])
 
 	const navHome = () => {
 		navigate("/home");
@@ -111,6 +113,7 @@ const Game = () => {
 				review={yourReview}
 				setReview={setYourReview}
 				userInfo={userInfo}
+				gameID={gameID}
 			/>
 			<ReviewList game={game} reviews={reviews} setReviews={setReviews} reviewers={reviewers}/>
 		</div>
