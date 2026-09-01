@@ -2,9 +2,25 @@
 
 ## Project demo
 1. Installation
-    - Install dependencies in backend, and frontend
-    - Install dependencies in the root folder
+    - Open terminal
+    - Install dependencies in the root folder: `npm install`
+    - Install dependencies in backend
+        ```
+        cd backend
+        npm install
+        ```
+    -  and frontend
+        ```
+        cd ../frontend
+        npm install
+        ```
+2. Change EC2 IP:
+    - Find `.env.example` file in `frontend` folder
+    - Create a new `.env` file in the same `frontend` folder
+    - Copy content of `.env.example` to `.env`
+        - Change value `00.00.0.000` to the EC2 public IP
 2. Run
+    - Open terminal in the project root folder (`~/SEM4-IFN636-A1`). This is important.
     - Run this command in root folder
         ```
         npm run dev
