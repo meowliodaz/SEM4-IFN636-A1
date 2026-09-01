@@ -2,13 +2,19 @@
 // 			like some sort of highlight
 
 
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosConfig';
 import { useAuth } from '../context/AuthContext';
 
-const YourReview = ({ review, setReview, userInfo }) => {
+const YourReview = ({ review, setReview, userInfo, gameID }) => {
 	const navigate = useNavigate();
 	const { user } = useAuth();
+
+	// useEffect(() => {
+	// 	console.log("review");
+	// 	console.log(review);
+	// },[user]);
 
 	const handleDelete = async (reviewId) => {
 		const deleteConfirm = window.confirm(`Deleting review: ${reviewId}`);
@@ -22,30 +28,40 @@ const YourReview = ({ review, setReview, userInfo }) => {
 
 	const goToEdit = () => {
 		// navigate(`/reviews/${review.id}`);
-		navigate(`/game/${review.gameId}/your-review`);
+		navigate(`/game/${gameID}/your-review`);
 	};
 	return (
 		<div>
 			<div className="bg-gray-100 p-4 mb-4 rounded shadow">
-				<div className="flex items-end">
-					<h2 className="font-bold">{userInfo.name}</h2>
-					<h4>&nbsp; {review.recommended ? "Recommended" : "Not recommended"}</h4>
-				</div>
-				<p>{review.description}</p>
-				<div className="mt-2">
+				{!review._id ? (<div>
 					<button
 						onClick={goToEdit}
-						className="mr-2 bg-green-400 text-black font-semibold px-4 py-2 rounded"
+						className="bg-blue-300 text-black font-semibold px-4 py-2 rounded"
 					>
-						Edit
+						Post your own review
 					</button>
-					<button
-						onClick={() => handleDelete(review._id)}
-						className="bg-red-400 text-black font-semibold px-4 py-2 rounded"
-					>
-						Delete
-					</button>
-				</div>
+				</div>) : (<div>
+					<div className="flex items-end">
+						<h2 className="font-bold">{userInfo.name}</h2>
+						<h4>&nbsp; {review.recommended ? "Recommended" : "Not recommended"}</h4>
+					</div>
+					<p>{review.description}</p>
+					<div className="mt-2">
+						<button
+							onClick={goToEdit}
+							className="mr-2 bg-green-400 text-black font-semibold px-4 py-2 rounded"
+						>
+							Edit
+						</button>
+						<button
+							onClick={() => handleDelete(review._id)}
+							className="bg-red-400 text-black font-semibold px-4 py-2 rounded"
+						>
+							Delete
+						</button>
+					</div>
+				</div>)}
+				
 			</div>
 		</div>
 	);
