@@ -23,6 +23,7 @@
     - Open terminal in the project root folder (`~/SEM4-IFN636-A1`). This is important.
     - Run this command in root folder
         ```
+        npm install
         npm run dev
         ```
 
